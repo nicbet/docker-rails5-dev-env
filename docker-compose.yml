@@ -6,7 +6,7 @@ services:
     ports:
       - "3001:3000"
     volumes:
-      - .:/app
+      - ./src:/app
       - gems:/ruby_gems
     depends_on:
       - db
