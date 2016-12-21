@@ -14,4 +14,4 @@ services:
     image: postgres:9
 
 volumes:
-  - gems
+  gems:
