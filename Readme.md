@@ -8,17 +8,17 @@
 4. It is okay to overwrite the `Gemfile` when asked.
 5. Bundle dependencies `./docker-rails  bundle`
 6. Configure link to database in `config/database.yml`.
-```
-default: &default
-  adapter: postgresql
-  encoding: unicode
-  # For details on connection pooling, see rails configuration guide
-  # http://guides.rubyonrails.org/configuring.html#database-pooling
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  host: db
-  port: <%= ENV['DB_PORT_5432_TCP_PORT'] %>
-  username: postgres
-```
+  ```
+  default: &default
+    adapter: postgresql
+    encoding: unicode
+    # For details on connection pooling, see rails configuration guide
+    # http://guides.rubyonrails.org/configuring.html#database-pooling
+    pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+    host: db
+    port: <%= ENV['DB_PORT_5432_TCP_PORT'] %>
+    username: postgres
+  ```
 7. Setup the Database `./docker-rails bin/rake db:setup` and `./docker-rails bin/rake db:migrate`
 8. Start everything `docker-compose up`
 9. You can use the convenience script to execute commands `./docker-rails <command> <arguments>`, the script will prefix `<command>` and `<arguments>` with `docker-compose run --rm app `.
