@@ -7,13 +7,11 @@ services:
       - "3001:3000"
     volumes:
       - .:/app
-    volumes_from:
-      - gems
+      - gems:/ruby_gems
     depends_on:
       - db
   db:
     image: postgres:9
-  gems:
-    image: busybox
-    volumes:
-      - /ruby_gems
+
+volumes:
+  - gems

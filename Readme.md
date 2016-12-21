@@ -8,7 +8,6 @@
 4. It is okay to overwrite the `Gemfile` when asked.
 5. Bundle dependencies `./docker-rails  bundle`
 6. Configure link to database in `config/database.yml`.
-
 ```
 default: &default
   adapter: postgresql
@@ -20,12 +19,15 @@ default: &default
   port: <%= ENV['DB_PORT_5432_TCP_PORT'] %>
   username: postgres
 ```
-
-7. Setup the Database `./docker-rails bin/rake db:migrate` and `./docker-rails bin/rake db:setup`
+7. Setup the Database `./docker-rails bin/rake db:setup` and `./docker-rails bin/rake db:migrate`
 8. Start everything `docker-compose up`
 9. You can use the convenience script to execute commands `./docker-rails <command> <arguments>`, the script will prefix `<command>` and `<arguments>` with `docker-compose run --rm app `.
 10. Navigate to http:/localhost:3001 and you should see the 'Yay! You're on Rails!' welcome page'
 
+
+#### Notes
+
+If you get any errors such as `Cannot render console from 172.25.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1` you can edit `config/environments/development.rb` and add a line `config.web_console.whitelisted_ips = '172.25.0.0/24'` at the end.
 
 #### Credits
 Adopted from Blog Post of Jesse B Hannah (https://jbhannah.net/articles/rails-development-with-docker/)
