@@ -7,11 +7,13 @@ services:
       - "3000:3000"
     volumes:
       - ./src:/app
-      - gems:/ruby_gems
+      - ./gem-cache:/ruby_gems
     depends_on:
       - db
   db:
-    image: postgres:9
-
-volumes:
-  gems:
+    image: postgres:10
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - ./db:/var/lib/postgresql/data
